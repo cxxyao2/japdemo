@@ -1,7 +1,9 @@
 package com.jane.jpademo;
 
 import com.jane.jpademo.models.Author;
+import com.jane.jpademo.models.Video;
 import com.jane.jpademo.repositories.AuthorRepository;
+import com.jane.jpademo.repositories.VideoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,18 +16,24 @@ public class JpademoApplication {
         SpringApplication.run(JpademoApplication.class, args);
     }
 
-    // @Bean
+     @Bean
     public CommandLineRunner commandLineRunner(
-            AuthorRepository authorRepository
+            AuthorRepository authorRepository,
+            VideoRepository videoRepository
     ){
         return args -> {
-            var author = Author.builder()
-                    .firstName("John")
-                    .lastName("Doe")
-                    .age(34)
-                    .email("john@doe.com")
+//            var author = Author.builder()
+//                    .firstName("John")
+//                    .lastName("Doe")
+//                    .age(34)
+//                    .email("john@doe.com")
+//                    .build();
+//            authorRepository.save(author);
+            var video = Video.builder()
+                    .name("abc")
+                    .length(5)
                     .build();
-            authorRepository.save(author);
+            videoRepository.save(video);
         };
     }
 }
