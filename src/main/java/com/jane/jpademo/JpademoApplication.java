@@ -16,7 +16,7 @@ public class JpademoApplication {
         SpringApplication.run(JpademoApplication.class, args);
     }
 
-     // @Bean
+    @Bean
     public CommandLineRunner commandLineRunner(
             AuthorRepository authorRepository,
             VideoRepository videoRepository
