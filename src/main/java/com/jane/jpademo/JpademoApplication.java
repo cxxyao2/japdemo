@@ -5,10 +5,12 @@ import com.jane.jpademo.models.Author;
 import com.jane.jpademo.models.Video;
 import com.jane.jpademo.repositories.AuthorRepository;
 import com.jane.jpademo.repositories.VideoRepository;
+import com.jane.jpademo.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 @SpringBootApplication
 public class JpademoApplication {
@@ -21,7 +23,7 @@ public class JpademoApplication {
     public CommandLineRunner commandLineRunner(
             AuthorRepository authorRepository,
             VideoRepository videoRepository
-    ){
+    ) {
         return args -> {
 //            for(int i=0;i<50;i++) {
 //            Faker faker = new Faker();
@@ -43,11 +45,17 @@ public class JpademoApplication {
 //                    .build();
 //            authorRepository.save(author);
 
-    authorRepository.updateAuthor(22,1);
+//    authorRepository.updateAuthor(22,1);
+//
+//    authorRepository.updatedByNamedQuery(30);
+//    authorRepository.findByNamedQuery(22)
+//            .forEach(System.out::println);
 
-    authorRepository.updatedByNamedQuery(30);
-    authorRepository.findByNamedQuery(22)
-            .forEach(System.out::println);
+            Specification<Author> spec = Specification
+                    .where(AuthorSpecification.hasAge(30))
+                            .and(AuthorSpecification.firstnameLike("Je"));
+            authorRepository.findAll(spec).forEach(System.out::println);
+
 
 //            var video = Video.builder()
 //                    .name("abc")
