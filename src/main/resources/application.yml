@@ -8,6 +8,6 @@ spring:
     password: Bo2006$han08*
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     database: mysql
     show-sql: true

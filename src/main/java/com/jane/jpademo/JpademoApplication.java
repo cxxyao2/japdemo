@@ -1,5 +1,6 @@
 package com.jane.jpademo;
 
+import com.github.javafaker.Faker;
 import com.jane.jpademo.models.Author;
 import com.jane.jpademo.models.Video;
 import com.jane.jpademo.repositories.AuthorRepository;
@@ -22,18 +23,33 @@ public class JpademoApplication {
             VideoRepository videoRepository
     ){
         return args -> {
+//            for(int i=0;i<50;i++) {
+//            Faker faker = new Faker();
 //            var author = Author.builder()
-//                    .firstName("John")
+//                    .firstName(faker.name().firstName())
+//                    .lastName(faker.name().lastName())
+//                    .age(faker.number().numberBetween(19,50))
+//                    .email("john" + i + "@doe.com")
+//                    .build();
+//             authorRepository.save(author);
+//            }
+            // update author with id = 1
+//            var author = Author.builder()
+//                    .id(1)
+//                    .firstName("JohnShrimp")
 //                    .lastName("Doe")
 //                    .age(34)
-//                    .email("john@doe.com")
+//                    .email("johnshrimp@gmail.com")
 //                    .build();
 //            authorRepository.save(author);
-            var video = Video.builder()
-                    .name("abc")
-                    .length(5)
-                    .build();
-            videoRepository.save(video);
+
+    authorRepository.updateAuthor(22,1);
+
+//            var video = Video.builder()
+//                    .name("abc")
+//                    .length(5)
+//                    .build();
+//            videoRepository.save(video);
         };
     }
 }
