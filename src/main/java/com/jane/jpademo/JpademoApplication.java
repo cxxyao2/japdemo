@@ -45,6 +45,10 @@ public class JpademoApplication {
 
     authorRepository.updateAuthor(22,1);
 
+    authorRepository.updatedByNamedQuery(30);
+    authorRepository.findByNamedQuery(22)
+            .forEach(System.out::println);
+
 //            var video = Video.builder()
 //                    .name("abc")
 //                    .length(5)
